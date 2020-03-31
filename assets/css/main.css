@@ -1,0 +1,422 @@
+/********************************************************************************
+****************************** RESET & VARIABLES ********************************
+********************************************************************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+html { 
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    font-style: normal;
+    font-family: 'Roboto', Sans-Serif;
+}
+
+:root {
+    --main-color: #6c5ce7;
+    --white-color: #fff;
+    --grey-color: #d1d1d1;
+    --shadow: 1px 1px 5px rgb(0, 0, 0);
+    --complex-shadow: 0px -1px 7px 0px rgba(0,0,0,0.24);
+}
+
+.main, .inner {
+    width: calc(100% - 1.7rem);
+    margin: 0 auto;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+    /*          (font-size + line-heigt) + (Svg + padding x2)   */
+    padding-bottom: calc((.6rem + .5rem) + (1.2rem + (.3rem * 2))) 
+}
+
+
+.vids-bg, .allscreen-img {
+    flex-grow: 1;
+} 
+
+h2 {
+    color: #333;
+    margin-bottom: .4rem;
+    font-size: 1.5rem;
+}
+
+/********************************************************************************
+************************************* HEADER ************************************
+********************************************************************************/
+
+.menu {
+    position: fixed;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    
+    box-shadow: var(--shadow);
+    background: var(--main-color);
+}
+
+.menu .title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    font-size: 1.9rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--white-color);
+    background: var(--main-color);
+    box-shadow: var(--shadow);
+
+}
+
+/************************************ NAVBAR ***********************************/
+.menu ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.menu li {
+    padding: .3rem 1rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: .6rem;
+}
+
+.menu a {
+    color: var(--white-color);
+    fill: var(--white-color);
+}
+
+.menu a:hover {
+    fill: var(--grey-color);
+    color: var(--grey-color);
+}
+
+.menu svg {
+    width: 1.5rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.menu .active-page {
+    border-top: 2px solid var(--white-color);
+}
+
+
+/********************************************************************************
+*************************************** MAIN ************************************
+********************************************************************************/
+
+.main .text { 
+    margin-top: 4rem;
+}
+
+.text p {
+    font-size: 1rem;
+    margin-bottom: .7rem;
+}
+
+.main section {
+    margin: 2rem 0;
+    padding: .7rem;
+    /* box-shadow: var(--complex-shadow);
+    border-radius: 10px 10px 10px 10px; */
+}
+
+/********************************* BLOCKQUOTE *********************************/
+
+blockquote {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin: 0 0 2rem 0;
+    background:#eee;
+    color:#333;
+    padding: 1.5em;
+    border-left: .7rem solid#ccc;
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.04);
+}
+
+blockquote footer {
+    font-size: 1.3rem;
+    margin: 0 .6rem;
+    font-style: italic;
+}
+
+/******************************** HIDE/UNHIDE TEXT *****************************/
+
+.readmore-checkbox { display: none }
+.readmore-checkbox ~ .readmore .readmore-button:before { content: 'Voir plus'}
+.readmore-checkbox:checked ~ .readmore .readmore-button:before { content: 'Voir moins' }
+
+.readmore-cible {
+    opacity: 0;
+    /* visibility: hidden; */
+    overflow: hidden;
+    max-height: 0;
+    font-size: 0;
+    transition: .5s ease;
+}
+  
+.readmore-checkbox:checked ~ .readmore .readmore-cible {
+    opacity: 1;
+    /* visibility: visible; */
+    font-size: inherit;
+    max-height: 1000rem;
+}
+  
+.readmore-button {
+    cursor: pointer;
+    display: inline-block;
+
+    background: var(--main-color);
+    border: 2px solid var(--main-color);
+    color: var(--white-color);
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+
+    margin: .5rem 0;
+    padding: 0 .7rem;
+}
+  
+.readmore-button:hover {
+    background: var(--white-color);
+    color: var(--main-color);
+}
+
+/********************************************************************************
+********************************** VIDS SECTION *********************************
+********************************************************************************/
+
+.vids-bg {
+    position: relative;
+    padding: 3rem 0 3rem 0;
+    background: #eee;
+}
+
+.svg-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5vw;
+    fill: white;
+}
+
+.vids h2 {
+    margin: 0 10px;
+}
+
+/******************** IFRAME THE SINGING CAT SOLUTION **********************/
+.iframe-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* RATIO 16:9 */
+    padding-top: 25px;
+    height: 0;
+
+    border: 4px solid var(--main-color);
+    margin: 20px 10px;
+}
+
+.iframe-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/********************************************************************************
+*********************************** GALLERY *************************************
+********************************************************************************/
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery img:hover {
+    border: 5px solid var(--main-color);
+    transition: all .2s;
+}
+
+.gallery {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-auto-rows: 200px;
+    grid-auto-flow: dense;
+
+    padding: 5px;
+    padding-bottom: 10px;
+    background: #acacac;
+}
+
+.vertical { grid-row: span 2 } 
+.horizontal { grid-column: span 2 }
+.big { grid-column: span 2; grid-row: span 2 }
+
+/********************************************************************************
+********************************** ONE SCREEN IMAGES ****************************
+********************************************************************************/
+
+.allscreen-img {
+    position: relative;
+    background: #eee;
+    padding: 5rem 0;
+}
+
+
+.img-spec img {
+    display: block;
+    margin: 0 auto;
+    max-width: 96%;
+    height: auto;
+}
+
+.img-spec figcaption {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--main-color);
+    text-align: center;
+    padding: 1rem;
+}
+
+/********************************************************************************
+************************************** FOOTER ***********************************
+********************************************************************************/
+.footer {
+    padding: 1rem 0 0 0;
+}
+
+.footer ul {
+    padding: 1rem 0;
+}
+
+.footer p {
+    text-align: center;
+    background: #202020;
+    color: #fff;
+    font-size: .55rem;
+    padding: .3rem;
+}
+
+.partners {
+    display: flex;
+    align-items: center;
+}
+
+.partners li {
+    flex: 1;
+    padding: 0 .2rem;
+    /* width: calc(100% / 6); */
+    text-align: center;
+}
+
+.partners li img {
+    width: 100%;
+    max-width: 6.3rem;
+    height: auto;
+}
+
+.footer h3 {
+    text-align: center;
+}
+
+
+.contact {
+    padding: .8rem 0;
+    font-size: .8rem;
+    text-align: center;
+    background: #202020;
+    color: #fff;
+    border-top: 10px solid #444444;
+}
+
+.contact a {
+    color: #fff;
+    border-bottom: 1px dashed #aaa;
+}
+
+/********************************************************************************
+********************************** MEDIA QUERIES ********************************
+********************************************************************************/
+
+
+/*********************************** NAV BAR TOP *******************************/
+
+@media (min-width: 800px) {
+
+    .container { padding-bottom: 0 }
+    .main .text { margin-top:  2rem }
+
+    .menu { 
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        display: flex;
+        padding: 0 1.7rem ;
+    }
+
+    .menu .title {
+        position: static;
+        box-shadow: none;
+    }
+
+    .menu .active-page {
+        border-top: 0;
+        border-bottom: 2px solid var(--white-color);
+    }
+
+    .nav {
+        margin-left: auto;
+    }
+
+    .vids-bg {
+        padding: 3rem 0 7rem 0;
+    }
+
+    .vids {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .vids article {
+        width: 50%;
+    }
+
+}
+
+@media (min-width: 1000px) {
+
+    .blockquotes {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+
+    .blockquotes p {
+        /* width: calc((30% * 3) + (2.5% * 2));    si justify-content: space-evenly */
+        width: 100%;
+    }
+
+    .blockquotes blockquote {
+        width: 30%;
+    }
+}
